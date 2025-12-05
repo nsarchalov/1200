@@ -1,0 +1,26 @@
+import React from 'react';
+
+interface SectionProps {
+  id?: string;
+  title?: string;
+  subtitle?: string;
+  className?: string;
+  children: React.ReactNode;
+  dark?: boolean;
+}
+
+export const Section: React.FC<SectionProps> = ({ id, title, subtitle, className = '', children, dark = false }) => {
+  return (
+    <section id={id} className={`py-16 md:py-24 ${dark ? 'bg-slate-900 text-white' : 'bg-white text-slate-900'} ${className}`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {(title || subtitle) && (
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            {title && <h2 className={`text-3xl md:text-4xl font-extrabold tracking-tight mb-4 ${dark ? 'text-white' : 'text-slate-900'}`}>{title}</h2>}
+            {subtitle && <p className={`text-lg md:text-xl ${dark ? 'text-slate-300' : 'text-slate-600'}`}>{subtitle}</p>}
+          </div>
+        )}
+        {children}
+      </div>
+    </section>
+  );
+};
