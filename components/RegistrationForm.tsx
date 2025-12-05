@@ -6,21 +6,6 @@ import { ChevronRight } from 'lucide-react';
 export const RegistrationForm: React.FC = () => {
   const { t } = useLanguage();
 
-  const scrollToConditions = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const element = document.getElementById('conditions');
-    if (element) {
-      const headerOffset = 100;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.scrollY - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-    }
-  };
-
   return (
     <div className="bg-white rounded-3xl p-6 md:p-8 shadow-2xl max-w-md w-full border border-slate-100">
       <h2 className="text-3xl font-bold text-slate-900 mb-6 leading-tight">
@@ -29,7 +14,6 @@ export const RegistrationForm: React.FC = () => {
       
       <a 
         href="#conditions" 
-        onClick={scrollToConditions}
         className="flex items-center gap-2 mb-6 text-slate-600 font-medium cursor-pointer hover:text-yellow-600 transition-colors group"
       >
         <div className="bg-yellow-100 p-1 rounded-full text-yellow-600 group-hover:bg-yellow-200 transition-colors">

@@ -19,20 +19,8 @@ export const Header: React.FC = () => {
     setLanguage(language === 'ru' ? 'ky' : 'ru');
   };
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-    e.preventDefault();
-    const element = document.getElementById(id);
-    if (element) {
-      const headerOffset = 100;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.scrollY - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-      setIsOpen(false);
-    }
+  const handleNavClick = () => {
+    setIsOpen(false);
   };
 
   return (
@@ -59,7 +47,6 @@ export const Header: React.FC = () => {
               <a 
                 key={key} 
                 href={`#${key}`} 
-                onClick={(e) => handleNavClick(e, key)}
                 className={`text-sm font-bold uppercase tracking-wide hover:text-yellow-400 transition-colors ${isScrolled ? 'text-slate-600' : 'text-slate-200'}`}
               >
                 {/* @ts-ignore */}
@@ -111,7 +98,7 @@ export const Header: React.FC = () => {
                 key={key} 
                 href={`#${key}`} 
                 className="text-2xl font-bold text-white hover:text-yellow-400 transition-colors border-b border-white/10 pb-4"
-                onClick={(e) => handleNavClick(e, key)}
+                onClick={handleNavClick}
               >
                 {/* @ts-ignore */}
                 {t.nav[key]}

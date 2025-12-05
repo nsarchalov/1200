@@ -8,21 +8,6 @@ import { useLanguage } from '../LanguageContext';
 export const Hero: React.FC = () => {
   const { t } = useLanguage();
 
-  const scrollToConditions = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const element = document.getElementById('conditions');
-    if (element) {
-      const headerOffset = 100;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.scrollY - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-    }
-  };
-
   return (
     <div className="relative min-h-[90vh] flex items-center pt-24 md:pt-20 overflow-hidden bg-slate-900">
       {/* Dynamic Background with Gradient Overlay */}
@@ -63,9 +48,8 @@ export const Hero: React.FC = () => {
               </Button>
               <Button 
                 href="#conditions" 
-                onClick={scrollToConditions}
-                variant="outline" 
-                className="h-14 md:h-16 px-8 md:px-10 text-lg border-slate-700 text-white bg-slate-800/50 hover:bg-slate-800 hover:border-slate-600"
+                variant="glass" 
+                className="h-14 md:h-16 px-8 md:px-10 text-lg"
               >
                 {t.hero.details}
                 <ChevronRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
